@@ -1,0 +1,28 @@
+<head>
+  <title>sortable-autoform-example</title>
+</head>
+
+<body>
+  <h1>Simple sortable-autoform example!</h1>
+
+  {{> example}}
+</body>
+
+<template name="example">
+	<div class="row">
+  {{#sortable items=exampleItems handle=".sortable-handle" animation=100 options=exampleOptions}} 
+  	{{>item }} 
+  {{/sortable}}
+	</div>
+</template>
+
+<template name="item">
+	<div data-id="{{order}}" class="col-md-3 sortable-handle">
+		<h2>{{title}}</h2>
+		<hr>
+		{{#autoForm collection="ExampleItems" id=this._id doc=this type="update"}}
+	    {{> afQuickField name="title"}}
+	    <button type="submit" class="btn btn-primary">SAVE</button>
+	  {{/autoForm}}
+	</div>
+</template>
